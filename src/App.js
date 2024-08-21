@@ -1,19 +1,15 @@
 import './App.css';
 import HomePage from './pages/homepage/homepage.components';
+import ShopPage from './pages/shop/shop.component';
 import { Route, Routes } from 'react-router-dom';
-
-const HatsPages = () =>(
-  <div>
-    <h1>Hats Page</h1>
-  </div>
-);
+import ErrorPage from './pages/errorpage/errorpage.component';
 
 function App() {
   return (
     <div>
       <Routes>
-        <Route path='/' Component={HomePage} />
-        <Route path='/hats' Component={HatsPages} /> 
+        <Route path='/' Component={HomePage} errorElement={<ErrorPage/ >}/>
+        <Route path='shop' Component={ShopPage} errorElement={<ErrorPage/ >} /> 
       </Routes>
     </div>
   );
