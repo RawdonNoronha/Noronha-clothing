@@ -6,7 +6,7 @@ import { Route, Routes } from 'react-router-dom';
 import Header from './components/header/header.component';
 import ErrorPage from './pages/errorpage/errorpage.component';
 import SignInAndSignUpPage from './pages/sign-in-and-sign-up/sign-in-and-sign-up.component';
-import { auth } from './firebase/firebase.util';
+import { auth, createNewUserInDB } from './firebase/firebase.util';
 
 class App extends React.Component {
   constructor()
@@ -17,17 +17,30 @@ class App extends React.Component {
     }
   }
 
-  unsubscrineFromAuth = null
+  unsubscribeFromAuth = null
 
   componentDidMount(){
-    this.unsubscrineFromAuth = auth.onAuthStateChanged(user =>{
-      this.setState({currentUser: user});
-      console.log(user);
-    })
+    
+    this.unsubscribeFromAuth = auth.onAuthStateChanged(async (user) => {
+      if (user) { 
+        // If a user is signed in, proceed with accessing user data
+        this.setState({ currentUser: user });
+        console.log('User has signed In');
+        createNewUserInDB(user);
+      } else {
+        // If no user is signed in, set currentUser to null
+        this.setState({ currentUser: null });
+        console.log("No user is signed in");
+      }
+    });
+
+    console.log(this.state);
+    
   }
+  
 
   componentWillUnmount(){
-    this.unsubscrineFromAuth();
+    this.unsubscribeFromAuth();
   }
 
   render(){
