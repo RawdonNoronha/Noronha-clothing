@@ -25,7 +25,7 @@ class App extends React.Component {
       if (user) { 
         // If a user is signed in, proceed with accessing user data
         this.setState({ currentUser: user });
-        console.log('User has signed In');
+        console.log('User has signed In', user);
         createNewUserInDB(user);
       } else {
         // If no user is signed in, set currentUser to null
