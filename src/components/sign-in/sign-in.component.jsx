@@ -17,7 +17,7 @@ export class SignIn extends Component {
 
     handleSubmit = async event => {
         event.preventDefault();
-        const { email, password}= event.target;
+        const { email, password }= event.target;
         try{
             await signInWithEmailAndPassword(auth, email.value, password.value);
             this.setState({email: '', password: ''});
@@ -25,7 +25,6 @@ export class SignIn extends Component {
         catch(error)
         {
             console.log(error);
-            
         }
     }
 

@@ -17,7 +17,7 @@ export class SignUp extends Component {
         }
     }
 
-    handleSubmit = async event => {
+    handleSubmit = async (event) => {
         event.preventDefault();
         const { displayName, email, password, confirmPassword } = this.state;
         
@@ -26,15 +26,24 @@ export class SignUp extends Component {
             return;
         }
         try {
-            // Create user with email and password
-            const { user } = await createUserWithEmailAndPassword(auth, email, password);
+            // // Create user with email and password
+            // const { user } = await createUserWithEmailAndPassword(auth, email, password);
+            // console.log('blah', user)
+            // // Manually set the displayName in the user profile
+            // await updateProfile(user, { displayName });
     
-            // Manually set the displayName in the user profile
-            await updateProfile(user, { displayName });
-    
-            // Pass the displayName directly if it’s not set in the user object
-            await createNewUserInDB(user);
-    
+            // // Pass the displayName directly if it’s not set in the user object
+            // await createNewUserInDB(user, {displayName});
+
+            await createUserWithEmailAndPassword(auth, email, password, displayName)
+            .then((userCredential) => {
+                // Signed up 
+                const user = userCredential.user;
+                updateProfile(user, {displayName})
+                console.log('blah2', user);
+                createNewUserInDB(user);
+            })
+            
             // Clear the form fields
             this.setState({
                 displayName: '', 
