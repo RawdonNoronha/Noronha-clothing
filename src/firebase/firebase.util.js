@@ -34,8 +34,7 @@ export const auth = getAuth();
 export const signInWithGoogle = () => signInWithPopup(auth, provider)
 
 export const createNewUserInDB = async (user) => {
-
-    try {
+  try {
         // Reference the user document in the Firestore database
         const docRef = doc(db, "users", user.uid);
         
@@ -55,7 +54,6 @@ export const createNewUserInDB = async (user) => {
               email: user.email,
               createdAt: new Date()
             });
-            window.location.href="/";
             console.log("Document written with ID: ", docRef.id);
           } catch (e) {
             console.error("Error adding document: ", e);

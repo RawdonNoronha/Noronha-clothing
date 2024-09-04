@@ -7,38 +7,28 @@ import Header from './components/header/header.component';
 import ErrorPage from './pages/errorpage/errorpage.component';
 import SignInAndSignUpPage from './pages/sign-in-and-sign-up/sign-in-and-sign-up.component';
 import { auth, createNewUserInDB } from './firebase/firebase.util';
+import { connect } from 'react-redux';
+import { setCurrentUser } from './redux/user/user.actions';
 
 class App extends React.Component {
-  constructor()
-  {
-    super();
-    this.state = {
-      currentUser: null
-    }
-  }
-
   unsubscribeFromAuth = null
-
   componentDidMount(){
+    console.log('hellow');
     
     this.unsubscribeFromAuth = auth.onAuthStateChanged(async (user) => {
-      if (user) { 
+      if (user) {
+        await createNewUserInDB(user);
         // If a user is signed in, proceed with accessing user data
-        this.setState({ currentUser: user });
+        this.props.setCurrentUser(user);
+        
         console.log('User has signed In', user);
-        createNewUserInDB(user);
       } else {
-        // If no user is signed in, set currentUser to null
-        this.setState({ currentUser: null });
+        this.props.setCurrentUser(null)
         console.log("No user is signed in");
       }
     });
-
-    console.log(this.state);
-    
   }
   
-
   componentWillUnmount(){
     this.unsubscribeFromAuth();
   }
@@ -46,7 +36,7 @@ class App extends React.Component {
   render(){
     return (
       <div>
-        <Header currentUser={this.state.currentUser} />
+        <Header />
         <Routes>
           <Route path='/' Component={HomePage} errorElement={ErrorPage}/>
           <Route path='shop' Component={ShopPage} errorElement={ErrorPage} /> 
@@ -57,4 +47,8 @@ class App extends React.Component {
   }
 }
 
-export default App;
+const mapsDispatchToProp = dispatch => ({
+  setCurrentUser: user => dispatch(setCurrentUser(user))
+})
+
+export default connect(null, mapsDispatchToProp)(App);
