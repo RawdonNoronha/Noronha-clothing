@@ -13,14 +13,11 @@ import { setCurrentUser } from './redux/user/user.actions';
 class App extends React.Component {
   unsubscribeFromAuth = null
   componentDidMount(){
-    console.log('hellow');
-    
     this.unsubscribeFromAuth = auth.onAuthStateChanged(async (user) => {
       if (user) {
         await createNewUserInDB(user);
         // If a user is signed in, proceed with accessing user data
         this.props.setCurrentUser(user);
-        
         console.log('User has signed In', user);
       } else {
         this.props.setCurrentUser(null)
