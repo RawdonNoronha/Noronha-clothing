@@ -39,7 +39,7 @@ class App extends React.Component {
         <Header />
         <Routes>
           <Route path='/' Component={HomePage} errorElement={ErrorPage}/>
-          <Route path='/shop' Component={ShopPage} errorElement={ErrorPage} /> 
+          <Route path='/shop/*' Component={ShopPage} errorElement={ErrorPage} /> 
           <Route path='/checkout' Component={CheckoutPage} errorElement={ErrorPage} />
           <Route path='/signin' element={this.props.currentUser ? (<Navigate to='/' replace /> ): (<SignInAndSignUpPage />) } errorElement={ErrorPage} />
         </Routes>
