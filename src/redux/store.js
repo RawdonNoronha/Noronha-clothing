@@ -6,13 +6,10 @@ import { persistStore } from "redux-persist";
 const middlewares = [];
 
 //process.env is an eviroment variable it will know if the app is working in production or not
-// if(process.env.NODE_ENV === 'development')
-// {
-//     middlewares.push(logger);
-// }
-if (process.env.NODE_ENV === 'development') {
-    // Development-specific code, like logging
+if(process.env.NODE_ENV === 'development')
+{
     console.log('Running in development mode');
+    middlewares.push(logger);
 }
 
 if (process.env.NODE_ENV === 'production') {
