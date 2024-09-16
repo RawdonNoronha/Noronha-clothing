@@ -3,7 +3,7 @@ import logger from "redux-logger";
 import rootReducer from "./root-reducer";
 import { persistStore } from "redux-persist";
 
-const middlewares = [logger];
+const middlewares = [];
 
 //process.env is an eviroment variable it will know if the app is working in production or not
 // if(process.env.NODE_ENV === 'development')
