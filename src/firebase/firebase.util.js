@@ -42,11 +42,11 @@ export const createNewUserInDB = async (user) => {
         const docSnap = await getDoc(docRef);
         
         if (docSnap.exists()) {
-          console.log("Document Found!");
+          console.log("Document Found!...");
           
           // You can set the document data in the state or perform other actions here
         } else {
-          console.log("No such document!")
+          console.log("No such document!...")
 
           try {
              await setDoc(docRef, {
