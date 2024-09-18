@@ -1,10 +1,7 @@
 import { initializeApp } from "firebase/app";
-import { getFirestore } from "firebase/firestore";
 import { getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
-import { doc, getDoc } from "firebase/firestore";
+import { doc, getDoc, getFirestore } from "firebase/firestore";
 import { setDoc } from "firebase/firestore"; 
-
-
 
 // TODO: Replace the following with your app's Firebase project configuration
 // See: https://support.google.com/firebase/answer/7015592
@@ -63,3 +60,20 @@ export const createNewUserInDB = async (user) => {
         console.error("Error fetching document:", error);
     }
 }
+
+// export const addCollectionAndDocuments = async (collectionKey, objectsToAdd) => {
+//   console.log(objectsToAdd);
+//   objectsToAdd.forEach(async (element) => {
+//     try {
+//       // Pass each element (which should be an object) to addDoc
+//       const docRef = await addDoc(collection(db, collectionKey), element);
+//       console.log('Document written with ID: ', docRef.id);
+//     } catch (error) {
+//       console.error('Error adding document: ', error);
+//     }
+//   });
+// }
+
+//add in app.js in componentDidMount
+// const { collectionsArray } = this.props
+// addCollectionAndDocuments('collections', collectionsArray)

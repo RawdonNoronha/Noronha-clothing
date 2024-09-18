@@ -31,7 +31,7 @@ export class SignUp extends Component {
                 // Signed up 
                 const user = userCredential.user;
                 updateProfile(user, {displayName})
-                console.log('User authenticated using email and password...',user);
+                console.log('User authenticated using email and password...', user);
                 createNewUserInDB(user);
             })
             
