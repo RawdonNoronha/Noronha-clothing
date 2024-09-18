@@ -21,7 +21,7 @@ class App extends React.Component {
         await createNewUserInDB(user);
         // If a user is signed in, proceed with accessing user data
         this.props.setCurrentUser(user);
-        console.log('User has signed In', user);
+        console.log('User has signed In');
       } else {
         this.props.setCurrentUser(null)
         console.log("No user is signed in");
