@@ -5,14 +5,16 @@ import { setDoc } from "firebase/firestore";
 
 // TODO: Replace the following with your app's Firebase project configuration
 // See: https://support.google.com/firebase/answer/7015592
+
+//API KEY was here before converting to .env
 const firebaseConfig = {
-    apiKey: "AIzaSyBqP5ktQBBdFpiLM4AEgU78OmEM4MZjWDM",
-    authDomain: "noronha-clothing-db.firebaseapp.com",
-    projectId: "noronha-clothing-db",
-    storageBucket: "noronha-clothing-db.appspot.com",
-    messagingSenderId: "55898389409",
-    appId: "1:55898389409:web:9b13d914cfc24c4a1829e0",
-    measurementId: "G-HJQ2WEX8PM"
+  apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
+  authDomain: process.env.REACT_APP_FIREBASE_AUTH_DOMAIN,
+  projectId: process.env.REACT_APP_FIREBASE_PROJECT_ID,
+  storageBucket: process.env.REACT_APP_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: process.env.REACT_APP_FIREBASE_MESSAGING_SENDER_ID,
+  appId: process.env.REACT_APP_FIREBASE_APP_ID,
+  measurementId: process.env.REACT_APP_FIREBASE_MEASUREMENT_ID,
 };
 
 // Initialize Firebase
@@ -60,6 +62,8 @@ export const createNewUserInDB = async (user) => {
         console.error("Error fetching document:", error);
     }
 }
+
+//for adding shop data in firebase store db
 
 // export const addCollectionAndDocuments = async (collectionKey, objectsToAdd) => {
 //   console.log(objectsToAdd);

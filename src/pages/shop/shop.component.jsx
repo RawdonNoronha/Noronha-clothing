@@ -4,6 +4,12 @@ import { Route, Routes } from 'react-router';
 import CollectionPageWrapper from '../../components/collection-wrapper/collection-wrapper.component';
 
 class Shop extends Component {
+  unsubscribeFromSnapshot= null;
+
+  // componentDidMount() {
+  //   const 
+  // }
+
   render() {
     return (
       <div className='shop-page'>
