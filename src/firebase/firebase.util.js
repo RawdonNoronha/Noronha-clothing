@@ -63,6 +63,24 @@ export const createNewUserInDB = async (user) => {
     }
 }
 
+export const convertCollectionsSnapshotToMap = ( collections ) => {
+  const transformedCollections = collections.docs.map(doc => {
+    const { title, items } = doc.data();
+    return {
+      id: doc.id,
+      title,
+      routeName: encodeURI(title.toLowerCase()),
+      items
+    }
+  })
+  console.log(transformedCollections, 'transformedCollections');
+  return transformedCollections.reduce((accumulator, collection) =>{
+    accumulator[collection.title.toLowerCase()] = collection;
+    return accumulator;
+  }, {});
+  
+}
+
 //for adding shop data in firebase store db
 
 // export const addCollectionAndDocuments = async (collectionKey, objectsToAdd) => {
