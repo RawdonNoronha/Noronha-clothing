@@ -2,7 +2,7 @@ import { React, Component } from 'react'
 import CollectionsOverview from '../../components/collections-overview/collections-overview.component';
 import { Route, Routes } from 'react-router';
 import CollectionPageWrapper from '../../components/collection-wrapper/collection-wrapper.component';
-import { collection, onSnapshot } from 'firebase/firestore';
+import { collection, getDocs } from 'firebase/firestore';
 import { db, convertCollectionsSnapshotToMap } from '../../firebase/firebase.util';
 import { connect } from 'react-redux';
 import { updateCollections } from '../../redux/shop/shop.action';
@@ -21,7 +21,13 @@ class Shop extends Component {
     const { updateCollections } = this.props;
     const collectionRef = collection(db,'collections');
     // console.log(collectionRef,'collectRef');
-    onSnapshot(collectionRef, snaphot =>{
+    
+    // fetch('https://firestore.googleapis.com/v1/projects/noronha-clothing-db/databases/(default)/documents/collections'
+    // )
+    // .then(response => response.json())
+    // .then(collections =>console.log(collections));
+
+    getDocs(collectionRef).then(snaphot =>{
       // console.log(snaphot,'snap');
       const collectionsMap = convertCollectionsSnapshotToMap(snaphot);
       // console.log('collectionMap', collectionsMap);
