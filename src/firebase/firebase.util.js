@@ -42,7 +42,6 @@ export const createNewUserInDB = async (user) => {
 
     if (docSnap.exists()) {
       console.log("Document Found!...");
-
       // You can set the document data in the state or perform other actions here
     } else {
       console.log("No such document!...");
@@ -73,7 +72,7 @@ export const convertCollectionsSnapshotToMap = (collections) => {
       items,
     };
   });
-  console.log(transformedCollections, "transformedCollections");
+  // console.log(transformedCollections, "transformedCollections");
   return transformedCollections.reduce((accumulator, collection) => {
     accumulator[collection.title.toLowerCase()] = collection;
     return accumulator;
