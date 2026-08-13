@@ -42,18 +42,40 @@ const getButtonStyles = props => {
 export const CustomButtonContainer = styled.button.withConfig({
     shouldForwardProp: (prop) => prop !== 'inverted' && prop !== 'isGoogleSignIn',
     })`
-    min-width: 165px;
+    min-width: 140px;
     width: auto;
-    height: 50px;
+    height: 45px;
     letter-spacing: 0.5px;
-    line-height: 50px;
-    padding: 0 35px 0 35px;
-    font-size: 15px;
+    line-height: 45px;
+    padding: 0 20px;
+    font-size: 12px;
     text-transform: uppercase;
     font-family: 'Open Sans Condensed';
     font-weight: bolder;
     cursor: pointer;
     display: flex;
     justify-content: center;
+    align-items: center;
+    transition: all 0.3s ease;
+    touch-action: manipulation;
+    user-select: none;
+    border-radius: 2px;
+
+    @media (min-width: 481px) {
+      min-width: 150px;
+      height: 48px;
+      line-height: 48px;
+      padding: 0 28px;
+      font-size: 13px;
+    }
+
+    @media (min-width: 768px) {
+      min-width: 165px;
+      height: 50px;
+      line-height: 50px;
+      padding: 0 35px;
+      font-size: 15px;
+    }
+
     ${getButtonStyles}
 `;  

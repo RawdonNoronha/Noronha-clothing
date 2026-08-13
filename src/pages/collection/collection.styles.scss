@@ -3,14 +3,32 @@
     flex-direction: column;
   
     .title {
-      font-size: 38px;
+      font-size: 28px;
       margin: 0 auto 30px;
+      text-align: center;
+
+      @media (min-width: 768px) {
+        font-size: 38px;
+      }
     }
   
     .items {
       display: grid;
-      grid-template-columns: 1fr 1fr 1fr 1fr;
+      grid-template-columns: 1fr;
       grid-gap: 10px;
+      width: 100%;
+
+      @media (min-width: 481px) {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      @media (min-width: 768px) {
+        grid-template-columns: 1fr 1fr 1fr;
+      }
+
+      @media (min-width: 1024px) {
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+      }
   
       & .collection-item {
         margin-bottom: 30px;
