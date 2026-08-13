@@ -19,17 +19,30 @@ export const HeaderContainer = styled.div`
 `;
 
 export const LogoConatiner = styled(Link)`
-    height: 70px;
-    width: 70px;
-    padding: 25px;
+    height: 50px;
+    width: 50px;
+    padding: 15px;
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-shrink: 0;
 
-    @media (max-width: 480px) {
-        height: 50px;
-        width: 50px;
-        padding: 15px;
+    @media (min-width: 481px) {
+        height: 60px;
+        width: 60px;
+        padding: 20px;
+    }
+
+    @media (min-width: 768px) {
+        height: 70px;
+        width: 70px;
+        padding: 25px;
+    }
+
+    @media (min-width: 1024px) {
+        height: 100px;
+        width: 100px;
+        padding: 30px;
     }
 `;
 
@@ -58,6 +71,16 @@ export const OptionLink = styled(Link)`
     }
 `;
 
+export const MobileCartIconContainer = styled.div`
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+
+    @media (min-width: 768px) {
+        display: none;
+    }
+`;
+
 export const HamburgerButton = styled.button`
     display: none;
     flex-direction: column;
@@ -65,6 +88,7 @@ export const HamburgerButton = styled.button`
     border: none;
     cursor: pointer;
     padding: 10px;
+    flex-shrink: 0;
 
     @media (max-width: 767px) {
         display: flex;

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { OptionsContainer, LogoConatiner, OptionLink, HeaderContainer, HamburgerButton, MobileMenuContainer, MobileNav } from './header.styles';
+import { OptionsContainer, LogoConatiner, OptionLink, HeaderContainer, HamburgerButton, MobileMenuContainer, MobileNav, MobileCartIconContainer } from './header.styles';
 import { ReactComponent as Logo} from '../../assets/crown.svg'
 import { auth } from '../../firebase/firebase.util';
 import CartIcon from '../cart-icon/cart-icon.component';
@@ -38,6 +38,10 @@ const Header = ({ currentUser, hidden }) => {
                 }
                 <CartIcon />
             </OptionsContainer>
+
+            <MobileCartIconContainer>
+                <CartIcon />
+            </MobileCartIconContainer>
 
             <HamburgerButton onClick={toggleMenu} aria-label="Toggle menu">
                 <span></span>
