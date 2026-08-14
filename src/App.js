@@ -1,6 +1,7 @@
 import './App.css';
 import React from 'react';
 import HomePage from './pages/homepage/homepage.components';
+import ContactPage from './pages/contactpage/contactpage.components';
 import ShopPage from './pages/shop/shop.component';
 import CheckoutPage from './pages/checkout/checkout.component';
 import Header from './components/header/header.component';
@@ -38,10 +39,11 @@ class App extends React.Component {
       <div>
         <Header />
         <Routes>
-          <Route path='/' Component={HomePage} errorElement={ErrorPage}/>
-          <Route path='/shop/*' Component={ShopPage} errorElement={ErrorPage} /> 
-          <Route path='/checkout' Component={CheckoutPage} errorElement={ErrorPage} />
-          <Route path='/signin' element={this.props.currentUser ? (<Navigate to='/' replace /> ): (<SignInAndSignUpPage />) } errorElement={ErrorPage} />
+          <Route path='/' element={<HomePage />} />
+          <Route path='/shop/*' element={<ShopPage />} />
+          <Route path='/checkout' element={<CheckoutPage />} />
+          <Route path='/contact' element={<ContactPage />} />
+          <Route path='/signin' element={this.props.currentUser ? (<Navigate to='/' replace />) : (<SignInAndSignUpPage />)} />
         </Routes>
       </div>
     );

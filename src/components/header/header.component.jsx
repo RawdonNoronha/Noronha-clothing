@@ -30,7 +30,7 @@ const Header = ({ currentUser, hidden }) => {
                 <OptionLink to='/shop' onClick={closeMenu}>
                     SHOP
                 </OptionLink>
-                <OptionLink to='/shop' onClick={closeMenu}>
+                <OptionLink to='/contact' onClick={closeMenu}>
                     CONTACT
                 </OptionLink>
                 {

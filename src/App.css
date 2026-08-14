@@ -43,6 +43,6 @@ body {
 
 @media (min-width: 1024px) {
     body {
-        padding: 20px 60px !important;
+        padding: 10px 60px !important;
     }
 }
