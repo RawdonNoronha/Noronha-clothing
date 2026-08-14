@@ -5,8 +5,7 @@ const ContactPage = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    // Add your form submission logic here
-    console.log("Contact form submitted");
+    alert("Thank you for reaching out! We will get back to you soon.");
   };
 
   return (
