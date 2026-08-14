@@ -39,11 +39,11 @@ class App extends React.Component {
       <div>
         <Header />
         <Routes>
-          <Route path='/' element={<HomePage />} />
-          <Route path='/shop/*' element={<ShopPage />} />
-          <Route path='/checkout' element={<CheckoutPage />} />
-          <Route path='/contact' element={<ContactPage />} />
-          <Route path='/signin' element={this.props.currentUser ? (<Navigate to='/' replace />) : (<SignInAndSignUpPage />)} />
+          <Route path='/' element={<HomePage />} errorElement={<ErrorPage />} />
+          <Route path='/shop/*' element={<ShopPage />} errorElement={<ErrorPage />} />
+          <Route path='/checkout' element={<CheckoutPage />} errorElement={<ErrorPage />} />
+          <Route path='/contact' element={<ContactPage />} errorElement={<ErrorPage />} />
+          <Route path='/signin' element={this.props.currentUser ? (<Navigate to='/' replace />) : (<SignInAndSignUpPage />)} errorElement={<ErrorPage />} />
         </Routes>
       </div>
     );
